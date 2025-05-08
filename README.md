@@ -16,25 +16,4 @@ Error messages involving interfaces are considered to be more readable than thos
 What is the use of the keyof keyword in TypeScript? Provide an example.
 Blog:02
 The keyof keyword in TypeScript is used to extract the keys of a type as a union of string literal types. This allows for type-safe access to object properties, especially in scenarios involving generics or dynamic property access. 
-interface Person {
-  name: string;
-  age: number;
-  location: string;
-}
-
-type PersonKeys = keyof Person; // "name" | "age" | "location"
-
-function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
-  return obj[key];
-}
-
-const person: Person = {
-  name: "John Doe",
-  age: 30,
-  location: "New York",
-};
-
-const personName = getProperty(person, "name"); // string
-const personAge = getProperty(person, "age");   // number
-// const personCity = getProperty(person, "city"); // Error: Argument of type '"city"' is not assignable to parameter of type '"name" | "age" | "location"'.
 
